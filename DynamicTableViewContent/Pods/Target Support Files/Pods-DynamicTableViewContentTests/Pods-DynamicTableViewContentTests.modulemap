@@ -1,0 +1,6 @@
+framework module Pods_DynamicTableViewContentTests {
+  umbrella header "Pods-DynamicTableViewContentTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
