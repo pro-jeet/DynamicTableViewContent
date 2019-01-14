@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B99B22E94C135F3D674C4D2C069D6F39"
+               BlueprintIdentifier = "25EA7CEE2863D9E7D47C8B202BD1B840"
                BuildableName = "Pods_DynamicTableViewContent.framework"
                BlueprintName = "Pods-DynamicTableViewContent"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B99B22E94C135F3D674C4D2C069D6F39"
+            BlueprintIdentifier = "25EA7CEE2863D9E7D47C8B202BD1B840"
             BuildableName = "Pods_DynamicTableViewContent.framework"
             BlueprintName = "Pods-DynamicTableViewContent"
             ReferencedContainer = "container:Pods.xcodeproj">

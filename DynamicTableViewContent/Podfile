@@ -8,6 +8,7 @@ target 'DynamicTableViewContent' do
   # Pods for DynamicTableViewContent
 
 	pod 'Alamofire', '4.8.0'
+	pod 'SDWebImage', '~> 4.0'
 
   target 'DynamicTableViewContentTests' do
     inherit! :search_paths

@@ -23,6 +23,15 @@
 		6958877621EC545E00782BB2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6958877321EC545E00782BB2 /* Info.plist */; };
 		6958877721EC54B400782BB2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6958872F21EC52BB00782BB2 /* Main.storyboard */; };
 		6958877821EC54B400782BB2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6958873721EC52C100782BB2 /* LaunchScreen.storyboard */; };
+		6958877B21EC706200782BB2 /* InfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6958877A21EC706200782BB2 /* InfoModel.swift */; };
+		6958877C21EC706200782BB2 /* InfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6958877A21EC706200782BB2 /* InfoModel.swift */; };
+		6958877D21EC706200782BB2 /* InfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6958877A21EC706200782BB2 /* InfoModel.swift */; };
+		6958878121EC7EC200782BB2 /* InfoModelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6958877F21EC7EC200782BB2 /* InfoModelTableViewCell.swift */; };
+		6958878221EC7EC200782BB2 /* InfoModelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6958877F21EC7EC200782BB2 /* InfoModelTableViewCell.swift */; };
+		6958878321EC7EC200782BB2 /* InfoModelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6958877F21EC7EC200782BB2 /* InfoModelTableViewCell.swift */; };
+		6958878421EC7EC200782BB2 /* InfoModelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6958878021EC7EC200782BB2 /* InfoModelTableViewCell.xib */; };
+		6958878521EC7EC200782BB2 /* InfoModelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6958878021EC7EC200782BB2 /* InfoModelTableViewCell.xib */; };
+		6958878621EC7EC200782BB2 /* InfoModelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6958878021EC7EC200782BB2 /* InfoModelTableViewCell.xib */; };
 		AD8AB6BA3AE97FD30B3370C1 /* Pods_DynamicTableViewContent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ADEB736C669F38FD095942E /* Pods_DynamicTableViewContent.framework */; };
 		D8C29EE0D003C026614B7CFC /* Pods_DynamicTableViewContentUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D171970AB0522A43CD8F556 /* Pods_DynamicTableViewContentUITests.framework */; };
 		F858D4B74C36D5902682522E /* Pods_DynamicTableViewContentTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B8B3E241C178501228B9C34 /* Pods_DynamicTableViewContentTests.framework */; };
@@ -63,6 +72,9 @@
 		6958876221EC53BB00782BB2 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6958876E21EC53FD00782BB2 /* DynamicTableViewContent.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DynamicTableViewContent.xcdatamodel; sourceTree = "<group>"; };
 		6958877321EC545E00782BB2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6958877A21EC706200782BB2 /* InfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoModel.swift; sourceTree = "<group>"; };
+		6958877F21EC7EC200782BB2 /* InfoModelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoModelTableViewCell.swift; sourceTree = "<group>"; };
+		6958878021EC7EC200782BB2 /* InfoModelTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoModelTableViewCell.xib; sourceTree = "<group>"; };
 		6ADEB736C669F38FD095942E /* Pods_DynamicTableViewContent.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DynamicTableViewContent.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		81C0437E584AF723208C5EA7 /* Pods-DynamicTableViewContent.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DynamicTableViewContent.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DynamicTableViewContent/Pods-DynamicTableViewContent.debug.xcconfig"; sourceTree = "<group>"; };
 		9B8B3E241C178501228B9C34 /* Pods_DynamicTableViewContentTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DynamicTableViewContentTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,6 +164,7 @@
 				6958875C21EC53B000782BB2 /* AppDelegate */,
 				6958876121EC53BB00782BB2 /* ViewControllers */,
 				6958876621EC53C400782BB2 /* Plists */,
+				6958877E21EC706800782BB2 /* Models */,
 				6958876C21EC53FD00782BB2 /* DB */,
 			);
 			path = DynamicTableViewContent;
@@ -187,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				6958876221EC53BB00782BB2 /* ViewController.swift */,
+				6958877F21EC7EC200782BB2 /* InfoModelTableViewCell.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -204,6 +218,7 @@
 			children = (
 				6958872F21EC52BB00782BB2 /* Main.storyboard */,
 				6958873721EC52C100782BB2 /* LaunchScreen.storyboard */,
+				6958878021EC7EC200782BB2 /* InfoModelTableViewCell.xib */,
 			);
 			path = StoryBoard;
 			sourceTree = "<group>";
@@ -222,6 +237,15 @@
 				6958873521EC52C100782BB2 /* Assets.xcassets */,
 			);
 			path = Assets;
+			sourceTree = "<group>";
+		};
+		6958877E21EC706800782BB2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6958877A21EC706200782BB2 /* InfoModel.swift */,
+			);
+			name = Models;
+			path = DB/Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -335,6 +359,7 @@
 				6958877721EC54B400782BB2 /* Main.storyboard in Resources */,
 				6958877821EC54B400782BB2 /* LaunchScreen.storyboard in Resources */,
 				6958873621EC52C100782BB2 /* Assets.xcassets in Resources */,
+				6958878421EC7EC200782BB2 /* InfoModelTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,6 +368,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6958877521EC545E00782BB2 /* Info.plist in Resources */,
+				6958878521EC7EC200782BB2 /* InfoModelTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,6 +377,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6958877621EC545E00782BB2 /* Info.plist in Resources */,
+				6958878621EC7EC200782BB2 /* InfoModelTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,10 +410,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-DynamicTableViewContent/Pods-DynamicTableViewContent-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -439,6 +468,8 @@
 				6958876321EC53BB00782BB2 /* ViewController.swift in Sources */,
 				6958876F21EC53FD00782BB2 /* DynamicTableViewContent.xcdatamodeld in Sources */,
 				6958875E21EC53B000782BB2 /* AppDelegate.swift in Sources */,
+				6958878121EC7EC200782BB2 /* InfoModelTableViewCell.swift in Sources */,
+				6958877B21EC706200782BB2 /* InfoModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,10 +477,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6958877C21EC706200782BB2 /* InfoModel.swift in Sources */,
 				6958876421EC53BB00782BB2 /* ViewController.swift in Sources */,
 				6958875F21EC53B000782BB2 /* AppDelegate.swift in Sources */,
 				6958874421EC52C100782BB2 /* DynamicTableViewContentTests.swift in Sources */,
 				6958877021EC53FD00782BB2 /* DynamicTableViewContent.xcdatamodeld in Sources */,
+				6958878221EC7EC200782BB2 /* InfoModelTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,10 +490,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6958877D21EC706200782BB2 /* InfoModel.swift in Sources */,
 				6958876521EC53BB00782BB2 /* ViewController.swift in Sources */,
 				6958876021EC53B000782BB2 /* AppDelegate.swift in Sources */,
 				6958874F21EC52C100782BB2 /* DynamicTableViewContentUITests.swift in Sources */,
 				6958877121EC53FD00782BB2 /* DynamicTableViewContent.xcdatamodeld in Sources */,
+				6958878321EC7EC200782BB2 /* InfoModelTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
