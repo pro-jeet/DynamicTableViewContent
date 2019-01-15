@@ -12,27 +12,11 @@ import Alamofire
 /**
  ## Feature Support
  
- This class does some awesome things. It supports:
+ This class works as a Root View Controller for windows. It supports:
  
- - Feature 1
- - Feature 2
- - Feature 3
+ - Data rendering provided by ViewControllerPresenter Class.
+ - Has Table view to show data
  
- ## Examples
- 
- Here is an example use case indented by four spaces because that indicates a
- code block:
- 
- let myAwesomeThing = MyAwesomeClass()
- myAwesomeThing.makeMoney()
- 
- ## Warnings
- 
- There are some things you should be careful of:
- 
- 1. Thing one
- 2. Thing two
- 3. Thing three
  */
 
 typealias CompletionHandler = (_ success:Bool, _ rows: [Row]?) -> Void
@@ -187,7 +171,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             DispatchQueue.main.async {
                 // Displaying Alert if No internet connection.
                 self.refreshControl.endRefreshing()
-                let presenter = InternetAlertPresenter(
+                let presenter = AlertPresenter(
                     alertMessage: self.errorMessageForNoInternet,
                     alertTitle: self.errorTitle
                 )
@@ -198,6 +182,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             viewControllerPresenter.attachedController(controler: self)
             viewControllerPresenter.getDataFromService(completionHandler: {[weak self] (status, rows) in
                 if let weekSelf = self {
+                    weekSelf.viewControllerPresenter.detachController()
                     if status {
                         if (rows?.count)! > 0 {
                             // The happy scenarios if Data is Available.
@@ -206,7 +191,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                             // Displaying Alert if No Data Available.
                             DispatchQueue.main.async {
                                 weekSelf.refreshControl.endRefreshing()
-                                let presenter = InternetAlertPresenter(
+                                let presenter = AlertPresenter(
                                     alertMessage: weekSelf.errorMessageForNoData,
                                     alertTitle: weekSelf.errorTitle
                                 )
@@ -218,7 +203,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                         DispatchQueue.main.async {
                             // Displaying Alert if service calls fails Available.
                             weekSelf.refreshControl.endRefreshing()
-                            let presenter = InternetAlertPresenter(
+                            let presenter = AlertPresenter(
                                 alertMessage: weekSelf.errorMessageForNoServiceFailure,
                                 alertTitle: weekSelf.errorTitle
                             )

@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import Alamofire
 
-struct InternetAlertPresenter {
+struct AlertPresenter {
     
     let alertMessage: String?
     // The title of the button to accept the confirmation
@@ -44,7 +44,7 @@ class ViewControllerPresenter {
         controller = controler
     }
     
-    func detachView() {
+    func detachController() {
         controller = nil
     }
     

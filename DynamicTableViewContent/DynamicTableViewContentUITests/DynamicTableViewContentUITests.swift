@@ -9,7 +9,16 @@
 import XCTest
 
 class DynamicTableViewContentUITests: XCTestCase {
-        
+    
+    let errorTitle: String = "ERROR !"
+    let errorMessageForNoInternet: String = "⚠️ No Internet Connection"
+    let errorMessageForNoServiceFailure: String = "⚠️ Something Went Wrong!"
+    let errorMessageForNoData: String = "⚠️ No Data Available!"
+    let okTitle = "OK"
+    
+    var app: XCUIApplication!
+    let controllerMock = UIViewController()
+    
     override func setUp() {
         super.setUp()
         
@@ -18,7 +27,8 @@ class DynamicTableViewContentUITests: XCTestCase {
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
         // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
-        XCUIApplication().launch()
+        app = XCUIApplication()
+        app.launch()
 
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
@@ -28,9 +38,17 @@ class DynamicTableViewContentUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testAlertPresenter() {
+        
+        let presenter = AlertPresenter(
+            alertMessage: errorMessageForNoServiceFailure,
+            alertTitle: errorTitle
+        )
+        presenter.displaAlert(in: controllerMock)
+        XCTAssertTrue(app.alerts.element.exists)
+        
+        app.alerts.element.buttons[okTitle].tap()
+        XCTAssertFalse(app.alerts.element.exists)
     }
     
 }

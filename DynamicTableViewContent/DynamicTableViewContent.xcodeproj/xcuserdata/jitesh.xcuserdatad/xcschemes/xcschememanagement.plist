@@ -7,7 +7,35 @@
 		<key>DynamicTableViewContent.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
+		<key>DynamicTableViewContentTests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
 			<integer>5</integer>
+		</dict>
+		<key>DynamicTableViewContentUITests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>6958872721EC52BB00782BB2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6958873E21EC52C100782BB2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6958874921EC52C100782BB2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
