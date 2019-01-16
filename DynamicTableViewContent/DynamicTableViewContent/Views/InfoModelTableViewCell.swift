@@ -99,7 +99,16 @@ class InfoModelTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
+        titleLabel.preferredMaxLayoutWidth = titleLabel.bounds.size.width
+        descriptionLabel.preferredMaxLayoutWidth = descriptionLabel.bounds.size.width
         layoutConstraints()
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        layoutConstraints()
+        layoutIfNeeded()
     }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -134,6 +143,12 @@ class InfoModelTableViewCell: UITableViewCell {
         descriptionLabel.bottomAnchor.constraint(equalTo: marginGuide.bottomAnchor).isActive = true
         let verticalSpace = NSLayoutConstraint(item: titleLabel, attribute: .bottom, relatedBy: .equal, toItem: descriptionLabel, attribute: .top, multiplier: 1, constant: 0)
         NSLayoutConstraint.activate([verticalSpace,verticalSpace1])
+    }
+    
+    override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        
+        layoutIfNeeded()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

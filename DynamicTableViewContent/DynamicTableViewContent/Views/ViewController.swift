@@ -79,7 +79,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.delegate = self
         tableView.dataSource = self
         
-        tableView.estimatedRowHeight = 44
+        tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
         
         // Adding refresh control to call service and reload data in tableView
@@ -90,6 +90,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.register(InfoModelTableViewCell.self, forCellReuseIdentifier: cellIdendifier)
         self.loadAndRefreshDataFromService()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        UIView.performWithoutAnimation {
+            tableView.beginUpdates()
+            tableView.endUpdates()
+        }
     }
     
     // Method for adding constraints for tableView
