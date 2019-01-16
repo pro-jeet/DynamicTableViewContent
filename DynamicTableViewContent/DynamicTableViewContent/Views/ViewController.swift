@@ -41,6 +41,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // MARK: - UI Components
     let tableView = UITableView()
     var refreshControl: UIRefreshControl!
+    var activityIndicator: UIActivityIndicatorView!
     
     // MARK: - Variables
     
@@ -62,6 +63,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         view.backgroundColor = .red
         view.addSubview(tableView)
+        
+        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        activityIndicator.startAnimating()
+        activityIndicator.isHidden = false
+        
+        let activityIndicatorBarButtonItem = UIBarButtonItem(customView: activityIndicator)
+        self.navigationItem.rightBarButtonItem = activityIndicatorBarButtonItem
         
         // Setting constraints for tableView
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -129,6 +137,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                             return
                         }
                         self.tableView.reloadRows(at: [indexPath], with: .automatic)
+                        activityIndicator.stopAnimating()
                     }
                 }
             }
@@ -154,6 +163,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 DispatchQueue.main.async {
                     weakSelf.tableView.reloadData()
                     weakSelf.refreshControl.endRefreshing()
+                    weakSelf.tableView.layoutSubviews()
+                    weakSelf.tableView.layoutIfNeeded()
                 }
             }
         }
