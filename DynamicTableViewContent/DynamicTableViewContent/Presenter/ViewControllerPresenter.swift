@@ -53,23 +53,19 @@ class ViewControllerPresenter {
         // Alamofire request for calling service.
         // Called in asyn global queue.
         Alamofire.request(serviceString, method: .get, parameters: nil, encoding: URLEncoding.queryString).validate().responseJSON(queue: DispatchQueue.global(), options:
-            .allowFragments, completionHandler: {[weak self] response in
+            .allowFragments, completionHandler: { response in
                 
                 if let jsonData = response.data {
-                    if let weekSelf = self {
-                        
-                        let jsonString = String(data: jsonData, encoding: String.Encoding.ascii)
-                        let data = jsonString!.data(using: String.Encoding.utf8)
-                        let infoModel = try? JSONDecoder().decode(InfoModel.self, from: data!)
-                        if let rows = infoModel?.rows {
-                            completionHandler(true,rows)
+
+                    let jsonString = String(data: jsonData, encoding: String.Encoding.ascii)
+                    let data = jsonString!.data(using: String.Encoding.utf8)
+                    let infoModel = try? JSONDecoder().decode(InfoModel.self, from: data!)
+                    if let rows = infoModel?.rows {
+                        guard let title = infoModel?.title else {
+                            completionHandler(false, nil, nil)
+                            return
                         }
-                        // Using Main thread to update the UI
-                        DispatchQueue.main.async {
-                            if let title = infoModel?.title {
-                                weekSelf.controller?.title = title
-                            }
-                        }
+                        completionHandler(true,rows, title)
                     }
                 }
         })

@@ -19,7 +19,7 @@ import Alamofire
  
  */
 
-typealias CompletionHandler = (_ success:Bool, _ rows: [Row]?) -> Void
+typealias CompletionHandler = (_ success:Bool, _ rows: [Row]?, _ title: String?) -> Void
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -138,7 +138,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // Method for Calling for service to get data for table view.
     @objc func loadAndRefreshDataFromService() {
         
-        self.getDataFromService { [weak self] (isSuccess, arr) in
+        self.getDataFromService { [weak self] (isSuccess, arr, _) in
             if isSuccess {
                 guard let weakSelf = self else{
                     return
@@ -180,13 +180,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         } else {
             viewControllerPresenter.attachedController(controler: self)
-            viewControllerPresenter.getDataFromService(completionHandler: {[weak self] (status, rows) in
+            viewControllerPresenter.getDataFromService(completionHandler: {[weak self] (status, rows, title) in
                 if let weekSelf = self {
                     weekSelf.viewControllerPresenter.detachController()
                     if status {
                         if (rows?.count)! > 0 {
+                            // Using Main thread to update the UI
+                            DispatchQueue.main.async {
+                                weekSelf.title = title
+                            }
                             // The happy scenarios if Data is Available.
-                            completionHandler(status, rows)
+                            completionHandler(status, rows, title)
+                            
                         } else {
                             // Displaying Alert if No Data Available.
                             DispatchQueue.main.async {
