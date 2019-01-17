@@ -7,15 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		692A62DD21F0DCFE0026F07F /* MockInfoModelData.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 692A62DC21F0DCFE0026F07F /* MockInfoModelData.geojson */; };
 		6958873621EC52C100782BB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6958873521EC52C100782BB2 /* Assets.xcassets */; };
 		6958874421EC52C100782BB2 /* DynamicTableViewContentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6958874321EC52C100782BB2 /* DynamicTableViewContentTests.swift */; };
 		6958874F21EC52C100782BB2 /* DynamicTableViewContentUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6958874E21EC52C100782BB2 /* DynamicTableViewContentUITests.swift */; };
 		6958875E21EC53B000782BB2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6958875D21EC53B000782BB2 /* AppDelegate.swift */; };
 		6958875F21EC53B000782BB2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6958875D21EC53B000782BB2 /* AppDelegate.swift */; };
 		6958876021EC53B000782BB2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6958875D21EC53B000782BB2 /* AppDelegate.swift */; };
-		6958876F21EC53FD00782BB2 /* DynamicTableViewContent.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6958876D21EC53FD00782BB2 /* DynamicTableViewContent.xcdatamodeld */; };
-		6958877021EC53FD00782BB2 /* DynamicTableViewContent.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6958876D21EC53FD00782BB2 /* DynamicTableViewContent.xcdatamodeld */; };
-		6958877121EC53FD00782BB2 /* DynamicTableViewContent.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6958876D21EC53FD00782BB2 /* DynamicTableViewContent.xcdatamodeld */; };
 		6958877521EC545E00782BB2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6958877321EC545E00782BB2 /* Info.plist */; };
 		6958877621EC545E00782BB2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6958877321EC545E00782BB2 /* Info.plist */; };
 		69C42DB221EE07600084C626 /* InfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C42DB121EE07600084C626 /* InfoModel.swift */; };
@@ -57,6 +55,7 @@
 		1135400B911B6BED650E7851 /* Pods-DynamicTableViewContent.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DynamicTableViewContent.release.xcconfig"; path = "Pods/Target Support Files/Pods-DynamicTableViewContent/Pods-DynamicTableViewContent.release.xcconfig"; sourceTree = "<group>"; };
 		1B6D7B4181C4B43B5103196B /* Pods-DynamicTableViewContentTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DynamicTableViewContentTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DynamicTableViewContentTests/Pods-DynamicTableViewContentTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4D171970AB0522A43CD8F556 /* Pods_DynamicTableViewContentUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DynamicTableViewContentUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		692A62DC21F0DCFE0026F07F /* MockInfoModelData.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = MockInfoModelData.geojson; sourceTree = "<group>"; };
 		6958872821EC52BB00782BB2 /* DynamicTableViewContent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DynamicTableViewContent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6958873521EC52C100782BB2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6958873F21EC52C100782BB2 /* DynamicTableViewContentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DynamicTableViewContentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,7 +65,6 @@
 		6958874E21EC52C100782BB2 /* DynamicTableViewContentUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicTableViewContentUITests.swift; sourceTree = "<group>"; };
 		6958875021EC52C100782BB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6958875D21EC53B000782BB2 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		6958876E21EC53FD00782BB2 /* DynamicTableViewContent.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DynamicTableViewContent.xcdatamodel; sourceTree = "<group>"; };
 		6958877321EC545E00782BB2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		69C42DB121EE07600084C626 /* InfoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoModel.swift; sourceTree = "<group>"; };
 		69C42DC321EE0E1F0084C626 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -163,7 +161,6 @@
 				6958877221EC540900782BB2 /* Assets */,
 				6958875C21EC53B000782BB2 /* AppDelegate */,
 				6958876621EC53C400782BB2 /* Plists */,
-				6958876C21EC53FD00782BB2 /* DB */,
 			);
 			path = DynamicTableViewContent;
 			sourceTree = "<group>";
@@ -174,6 +171,7 @@
 				6958874321EC52C100782BB2 /* DynamicTableViewContentTests.swift */,
 				6958874521EC52C100782BB2 /* Info.plist */,
 				69C42DCF21EE21F20084C626 /* ViewControllerPresenterTest.swift */,
+				692A62DC21F0DCFE0026F07F /* MockInfoModelData.geojson */,
 			);
 			path = DynamicTableViewContentTests;
 			sourceTree = "<group>";
@@ -201,14 +199,6 @@
 				6958877321EC545E00782BB2 /* Info.plist */,
 			);
 			path = Plists;
-			sourceTree = "<group>";
-		};
-		6958876C21EC53FD00782BB2 /* DB */ = {
-			isa = PBXGroup;
-			children = (
-				6958876D21EC53FD00782BB2 /* DynamicTableViewContent.xcdatamodeld */,
-			);
-			path = DB;
 			sourceTree = "<group>";
 		};
 		6958877221EC540900782BB2 /* Assets */ = {
@@ -361,6 +351,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6958877521EC545E00782BB2 /* Info.plist in Resources */,
+				692A62DD21F0DCFE0026F07F /* MockInfoModelData.geojson in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,11 +392,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-DynamicTableViewContent/Pods-DynamicTableViewContent-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -456,7 +449,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6958876F21EC53FD00782BB2 /* DynamicTableViewContent.xcdatamodeld in Sources */,
 				6958875E21EC53B000782BB2 /* AppDelegate.swift in Sources */,
 				69C42DC521EE0E1F0084C626 /* ViewController.swift in Sources */,
 				69C42DCC21EE12A50084C626 /* ViewControllerPresenter.swift in Sources */,
@@ -474,7 +466,6 @@
 				69C42DC621EE0E1F0084C626 /* ViewController.swift in Sources */,
 				6958875F21EC53B000782BB2 /* AppDelegate.swift in Sources */,
 				6958874421EC52C100782BB2 /* DynamicTableViewContentTests.swift in Sources */,
-				6958877021EC53FD00782BB2 /* DynamicTableViewContent.xcdatamodeld in Sources */,
 				69C42DB321EE07600084C626 /* InfoModel.swift in Sources */,
 				69C42DC921EE0E1F0084C626 /* InfoModelTableViewCell.swift in Sources */,
 			);
@@ -488,7 +479,6 @@
 				69C42DC721EE0E1F0084C626 /* ViewController.swift in Sources */,
 				6958876021EC53B000782BB2 /* AppDelegate.swift in Sources */,
 				6958874F21EC52C100782BB2 /* DynamicTableViewContentUITests.swift in Sources */,
-				6958877121EC53FD00782BB2 /* DynamicTableViewContent.xcdatamodeld in Sources */,
 				69C42DB421EE07600084C626 /* InfoModel.swift in Sources */,
 				69C42DCA21EE0E1F0084C626 /* InfoModelTableViewCell.swift in Sources */,
 			);
@@ -789,19 +779,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		6958876D21EC53FD00782BB2 /* DynamicTableViewContent.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				6958876E21EC53FD00782BB2 /* DynamicTableViewContent.xcdatamodel */,
-			);
-			currentVersion = 6958876E21EC53FD00782BB2 /* DynamicTableViewContent.xcdatamodel */;
-			path = DynamicTableViewContent.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 6958872021EC52BB00782BB2 /* Project object */;
 }

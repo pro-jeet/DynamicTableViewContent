@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import NVActivityIndicatorView
 
 /**
  ## Feature Support
@@ -33,7 +34,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     let errorMessageForNoInternet: String = "⚠️ No Internet Connection"
     let errorMessageForNoServiceFailure: String = "⚠️ Something Went Wrong!"
     let errorMessageForNoData: String = "⚠️ No Data Available!"
-    let notificationUserInfoKeyURL: String = "invalidURL"
     let notificationUserInfoKeyCell: String = "cell"
     
     private let viewControllerPresenter = ViewControllerPresenter(serviceString: "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json")
@@ -41,7 +41,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // MARK: - UI Components
     let tableView = UITableView()
     var refreshControl: UIRefreshControl!
-    var activityIndicator: UIActivityIndicatorView!
+    var activityIndicator: NVActivityIndicatorView!
     
     // MARK: - Variables
     
@@ -50,10 +50,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return []
     }()
     
-    //Used to store invalid image URL's of "Row" data to be loaded on InfoModelTableViewCell so as to prevent continous fetching from invalidURL's
-    var invalidURLs = Array<String>()
-    
-    
     // MARK: - UI Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,18 +57,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Adding observer to keep track of image aync call to update that particular cell
         NotificationCenter.default.addObserver(self, selector: #selector(self.reloadCell(_:)), name: NSNotification.Name(rawValue: notificationIdendifier), object: nil)
         
-        view.backgroundColor = .red
-        view.addSubview(tableView)
-        
-        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-        activityIndicator.startAnimating()
-        activityIndicator.isHidden = false
-        
-        let activityIndicatorBarButtonItem = UIBarButtonItem(customView: activityIndicator)
-        self.navigationItem.rightBarButtonItem = activityIndicatorBarButtonItem
-        
-        // Setting constraints for tableView
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .clear
+        view.addSubview(tableView)
+        // Setting constraints for tableView
         self.setTableConstraints()
         
         // Setting DataSource and Delegate for tableView
@@ -95,16 +83,32 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
+        if let activityIndicator = activityIndicator {
+            activityIndicator.startAnimating()
+        } else {
+            activityIndicator.startAnimating()
+        }
+        
         UIView.performWithoutAnimation {
             tableView.beginUpdates()
             tableView.endUpdates()
         }
     }
     
+    // Method for adding activityIndicator for loading
+    func setupActivityIndicator() {
+        
+        activityIndicator = NVActivityIndicatorView(frame: CGRect(x: view.bounds.size.width/2-25, y: view.bounds.size.height/2-25, width: 50, height: 50))
+        activityIndicator.type = . circleStrokeSpin
+        activityIndicator.color = .darkGray
+        view.addSubview(activityIndicator)
+    }
+    
     // Method for adding constraints for tableView
     func setTableConstraints() {
-        
-        // Adding constraints for tableView
+
+         // Adding constraints for tableView
+       
         if #available(iOS 11.0, *) {
             tableView.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor).isActive = true
         } else {
@@ -134,20 +138,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         if let notify = notification.userInfo {
             
-            if let invalidURL = notify[notificationUserInfoKeyURL] {
+            if let currentCell = notify[notificationUserInfoKeyCell] {
                 
-                if self.invalidURLs.contains((invalidURL as? String)!) == false {
-                    
-                    self.invalidURLs.append((invalidURL as? String)!)
-                    if let currentCell = notify[notificationUserInfoKeyCell] {
-                        
-                        guard let indexPath = self.tableView.indexPath(for: (currentCell as? InfoModelTableViewCell)!) else {
-                            // Note, this is to make sure, cell to reload is still in visible rect
-                            return
-                        }
-                        self.tableView.reloadRows(at: [indexPath], with: .automatic)
-                        activityIndicator.stopAnimating()
-                    }
+                guard let indexPath = self.tableView.indexPath(for: (currentCell as? InfoModelTableViewCell)!) else {
+                    // Note, this is to make sure, cell to reload is still in visible rect
+                    return
+                }
+                tableView.reloadRows(at: [indexPath], with: .automatic)
+                if let activityIndicator = activityIndicator {
+                    activityIndicator.stopAnimating()
                 }
             }
         }
@@ -156,6 +155,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // Method for Calling for service to get data for table view.
     @objc func loadAndRefreshDataFromService() {
         
+        if let activityIndicator = activityIndicator {
+            activityIndicator.startAnimating()
+        } else {
+            setupActivityIndicator()
+            activityIndicator.startAnimating()
+        }
         self.getDataFromService { [weak self] (isSuccess, arr, _) in
             if isSuccess {
                 guard let weakSelf = self else{
@@ -170,6 +175,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 // Using Main thread to update the UI
                 
                 DispatchQueue.main.async {
+                    if let activityIndicator = weakSelf.activityIndicator {
+                        activityIndicator.stopAnimating()
+                    }
                     weakSelf.tableView.reloadData()
                     weakSelf.refreshControl.endRefreshing()
                     weakSelf.tableView.layoutSubviews()
@@ -252,14 +260,7 @@ extension ViewController {
         cell.cellImageView.image = nil
         cell.titleLabel.text = nil
         cell.descriptionLabel.text = nil
-        cell.validURL = true
-        if let imageURL = self.infoModelArray[indexPath.row].imageHref {
-            if invalidURLs.contains(imageURL) {
-                cell.validURL = false
-            }
-        }
         cell.row = self.infoModelArray[indexPath.row]
-        cell.selectionStyle = .none
         cell.layoutSubviews()
         cell.layoutIfNeeded()
         return cell
@@ -274,4 +275,3 @@ extension ViewController {
     }
     
 }
-

@@ -26,16 +26,34 @@ class ViewControllerPresenterTest: XCTestCase {
         super.tearDown()
     }
     
+    
+    func readDataFromMockJson() -> InfoModel? {
+        
+        let urlBar = Bundle.main.url(forResource: "MockInfoModelData", withExtension: "geojson")!
+        
+        do {
+            let jsonData = try Data(contentsOf: urlBar)
+            let infoModel = try? JSONDecoder().decode(InfoModel.self, from: jsonData)
+            return infoModel
+        } catch { XCTFail("Missing Mock Json file: MockInfoModelData.json") }
+        return nil
+    }
+    
     func testWithValidURL() {
         
         // Initializing viewControllerPresenter with Valid URL
         let viewControllerPresenter = ViewControllerPresenter(serviceString: serviceStringMock)
         // Attaching viewControllerPresenter with Mock UIViewController
         viewControllerPresenter.attachedController(controler: controllerMock)
-        viewControllerPresenter.getDataFromService(completionHandler: { (status, rows) in
+        viewControllerPresenter.getDataFromService(completionHandler: { (status, rows, title) in
+            
             XCTAssertTrue(status)
             XCTAssertNotNil(rows)
+            XCTAssertNotNil(title)
+            let mockData = self.readDataFromMockJson()
+            XCTAssertEqual(mockData?.title, title)
             viewControllerPresenter.detachController()
+        
         })
     }
     
@@ -45,7 +63,7 @@ class ViewControllerPresenterTest: XCTestCase {
         let viewControllerPresenter = ViewControllerPresenter(serviceString: badServiceStringMock)
         // Attaching viewControllerPresenter with Mock UIViewController
         viewControllerPresenter.attachedController(controler: controllerMock)
-        viewControllerPresenter.getDataFromService(completionHandler: { (status, rows) in
+        viewControllerPresenter.getDataFromService(completionHandler: { (status, rows, title) in
             XCTAssertFalse(status)
             viewControllerPresenter.detachController()
         })
@@ -57,7 +75,7 @@ class ViewControllerPresenterTest: XCTestCase {
         let viewControllerPresenter = ViewControllerPresenter(serviceString: emptyServiceString)
         // Attaching viewControllerPresenter with Mock UIViewController
         viewControllerPresenter.attachedController(controler: controllerMock)
-        viewControllerPresenter.getDataFromService(completionHandler: { (status, rows) in
+        viewControllerPresenter.getDataFromService(completionHandler: { (status, rows, title) in
             XCTAssertFalse(status)
             viewControllerPresenter.detachController()
         })
