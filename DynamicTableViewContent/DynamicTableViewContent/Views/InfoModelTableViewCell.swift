@@ -38,7 +38,10 @@ class InfoModelTableViewCell: UITableViewCell {
                 descriptionLabel.isHidden = true
             }
             if let ro = row.imageHref {
+                cellImageView.isHidden = false
                 setImageWithImageURL(imageUrl: ro)
+            } else {
+                cellImageView.isHidden = true
             }
         }
     }
@@ -129,16 +132,15 @@ class InfoModelTableViewCell: UITableViewCell {
     // Method for Adding Constraints for SubViews
     func layoutConstraints() {
         
-        
         //Adding Constraints
         let marginGuide = contentView.layoutMarginsGuide
         
         //configure ContainerView
         
         containerView.leadingAnchor.constraint(equalTo:marginGuide.leadingAnchor, constant:0).isActive = true
-        containerView.topAnchor.constraint(equalTo:marginGuide.topAnchor, constant:0).isActive = true
-        containerView.bottomAnchor.constraint(equalTo:marginGuide.bottomAnchor, constant:10).isActive = true
-        let horizontalSpaceBetweenContainerAndImage = NSLayoutConstraint(item: cellImageView, attribute: .leading, relatedBy: .equal, toItem: containerView, attribute: .trailing, multiplier: 1, constant: 5)
+        containerView.topAnchor.constraint(equalTo:marginGuide.topAnchor, constant:10).isActive = true
+        containerView.bottomAnchor.constraint(equalTo:marginGuide.bottomAnchor, constant:-10).isActive = true
+        containerView.trailingAnchor.constraint(equalTo: cellImageView.leadingAnchor).isActive = true
         contentView.addConstraint(NSLayoutConstraint(item: containerView, attribute: .height, relatedBy: .greaterThanOrEqual, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 85))
         
         // configure titleLabel
@@ -147,19 +149,16 @@ class InfoModelTableViewCell: UITableViewCell {
         titleLabel.trailingAnchor.constraint(equalTo:self.containerView.trailingAnchor).isActive = true
     
         //Configure SubtitleLabel
-        
+        descriptionLabel.topAnchor.constraint(equalTo:self.titleLabel.bottomAnchor,constant:5).isActive = true
         descriptionLabel.leadingAnchor.constraint(equalTo:self.containerView.leadingAnchor).isActive = true
         descriptionLabel.bottomAnchor.constraint(equalTo:self.containerView.bottomAnchor).isActive = true
         descriptionLabel.trailingAnchor.constraint(equalTo:self.containerView.trailingAnchor).isActive = true
-        let verticalSpaceBetweenTitleAndDescription = NSLayoutConstraint(item: descriptionLabel, attribute: .top, relatedBy: .equal, toItem: titleLabel, attribute: .bottom, multiplier: 1, constant: 5)
-
         
         // configure ImageView
         cellImageView.topAnchor.constraint(equalTo:titleLabel.topAnchor, constant:0).isActive = true
         cellImageView.widthAnchor.constraint(equalToConstant:80).isActive = true
         cellImageView.heightAnchor.constraint(equalToConstant:80).isActive = true
         cellImageView.trailingAnchor.constraint(equalTo:marginGuide.trailingAnchor, constant:0).isActive = true
-        NSLayoutConstraint.activate([horizontalSpaceBetweenContainerAndImage, verticalSpaceBetweenTitleAndDescription])
     
     }
     
@@ -171,6 +170,14 @@ class InfoModelTableViewCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        self.cellImageView.image = nil
+        self.titleLabel.text = nil
+        self.descriptionLabel.text = nil
     }
 }
 

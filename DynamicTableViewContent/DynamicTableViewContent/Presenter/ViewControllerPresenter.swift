@@ -60,10 +60,21 @@ class ViewControllerPresenter {
                     let jsonString = String(data: jsonData, encoding: String.Encoding.ascii)
                     let data = jsonString!.data(using: String.Encoding.utf8)
                     let infoModel = try? JSONDecoder().decode(InfoModel.self, from: data!)
-                    if let rows = infoModel?.rows {
+                    if var rows = infoModel?.rows {
                         guard let title = infoModel?.title else {
                             completionHandler(false, nil, nil)
                             return
+                        }
+                        // Removing Row is all three values i.e, title, description and imageHref are empty, so as to prevent showing empty cell.
+                        var index:Int = 0
+                        for row in rows {
+                            let myDesc = row.description
+                            let myTitle = row.title
+                            let url = row.imageHref
+                            if(myDesc == nil && myTitle == nil && url == nil){
+                                rows.remove(at: index)
+                            }
+                            index = index + 1
                         }
                         completionHandler(true,rows, title)
                     }

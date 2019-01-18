@@ -106,29 +106,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     // Method for adding constraints for tableView
     func setTableConstraints() {
-
-         // Adding constraints for tableView
-       
-        if #available(iOS 11.0, *) {
-            tableView.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor).isActive = true
-        } else {
-            tableView.topAnchor.constraint(equalTo:view.topAnchor).isActive = true
-        }
-        if #available(iOS 11.0, *) {
-            tableView.leadingAnchor.constraint(equalTo:view.safeAreaLayoutGuide.leadingAnchor).isActive = true
-        } else {
-            tableView.leftAnchor.constraint(equalTo:view.leftAnchor).isActive = true
-        }
-        if #available(iOS 11.0, *) {
-            tableView.trailingAnchor.constraint(equalTo:view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-        } else {
-            tableView.rightAnchor.constraint(equalTo:view.rightAnchor).isActive = true
-        }
-        if #available(iOS 11.0, *) {
-            tableView.bottomAnchor.constraint(equalTo:view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        } else {
-            tableView.bottomAnchor.constraint(equalTo:view.bottomAnchor).isActive = true
-        }
+        
+        // Adding constraints for tableView
+        tableView.topAnchor.constraint(equalTo:view.topAnchor).isActive = true
+        tableView.leftAnchor.constraint(equalTo:view.leftAnchor).isActive = true
+        tableView.rightAnchor.constraint(equalTo:view.rightAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo:view.bottomAnchor).isActive = true
+        
     }
     
     // Method for reloading Cell after image gets downloaded.
@@ -204,7 +188,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     alertTitle: self.errorTitle
                 )
                 presenter.displaAlert(in: self)
-                 return
+                return
             }
         } else {
             viewControllerPresenter.attachedController(controler: self)
@@ -257,9 +241,7 @@ extension ViewController {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdendifier, for: indexPath) as! InfoModelTableViewCell
-        cell.cellImageView.image = nil
-        cell.titleLabel.text = nil
-        cell.descriptionLabel.text = nil
+        
         cell.row = self.infoModelArray[indexPath.row]
         cell.layoutSubviews()
         cell.layoutIfNeeded()
