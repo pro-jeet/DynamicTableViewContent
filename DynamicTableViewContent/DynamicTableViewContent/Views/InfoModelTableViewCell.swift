@@ -38,10 +38,9 @@ class InfoModelTableViewCell: UITableViewCell {
                 descriptionLabel.isHidden = true
             }
             if let ro = row.imageHref {
-                cellImageView.isHidden = false
                 setImageWithImageURL(imageUrl: ro)
             } else {
-                cellImageView.isHidden = true
+                cellImageView.image = UIImage(named: (self.placeHolderImageName))
             }
         }
     }
@@ -183,8 +182,11 @@ class InfoModelTableViewCell: UITableViewCell {
 
 extension InfoModelTableViewCell {
     
+    // Method to load image from url asynchrnously in background and using placeholder till image gets loaded.
+    
     func setImageWithImageURL(imageUrl: String){
         
+        cellImageView.image = nil
         let url = URL(string: imageUrl)
         cellImageView.sd_setShowActivityIndicatorView(true)
         cellImageView.sd_setIndicatorStyle(.gray)

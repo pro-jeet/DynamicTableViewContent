@@ -18,14 +18,15 @@ struct AlertPresenter {
     // The title of the button to reject the confirmation
     let okTitle = "OK"
     // A closure to be run when the user taps one of the
-    // alert's buttons. Outcome is an enum with two cases:
-    // .accepted and .rejected.
+    // alert's buttons. 
 
     // Common Method for displaying alert takes message and title as input.
     func displaAlert(in viewController: UIViewController) {
         
         let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: okTitle, style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: okTitle, style: .default, handler: { alert in
+            NotificationCenter.default.post(name: Notification.Name("refreshControl"), object: nil)
+        }))
         
         viewController.present(alert, animated: true)
     }
