@@ -28,15 +28,16 @@ class InfoModelTableViewCell: UITableViewCell {
             if let titleString = row.title {
                 titleLabel.isHidden = false
                 titleLabel.text = titleString
-            } else {
-                titleLabel.isHidden = true
             }
+            let toHidetextLabel = (titleLabel.text?.count == 0)  ? true :false
+            titleLabel.isHidden = toHidetextLabel
             if let description = row.description {
-                descriptionLabel.isHidden = false
+                
                 descriptionLabel.text = description
-            } else {
-                descriptionLabel.isHidden = true
             }
+            let toHideDescLabel = (descriptionLabel.text?.count == 0)  ? true :false
+            descriptionLabel.isHidden = toHideDescLabel
+
             if let ro = row.imageHref {
                 setImageWithImageURL(imageUrl: ro)
             } else {
@@ -199,7 +200,6 @@ extension InfoModelTableViewCell {
                         weekSelf.cellImageView.image = UIImage(named: (weekSelf.placeHolderImageName))
                         weekSelf.cellImageView.setNeedsLayout()
                         
-                    } else {
                     }
                 }
             }

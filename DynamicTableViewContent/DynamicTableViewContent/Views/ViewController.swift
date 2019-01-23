@@ -60,7 +60,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Adding observer to keep track if internet is not comnnected then refresh control should end refreshing without blocking main thread
         NotificationCenter.default.addObserver(self, selector: #selector(self.endrefreshing(_:)), name: NSNotification.Name(rawValue: notificationIdendifierRefreshControl), object: nil)
         
-        
         tableView.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .clear
         view.addSubview(tableView)
@@ -96,6 +95,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         activityIndicator.type = . circleStrokeSpin
         activityIndicator.color = .darkGray
         view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
     }
     
     // Method for adding constraints for tableView
@@ -144,6 +144,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
+    
     // Method for Calling for service to get data for table view.
     @objc func loadAndRefreshDataFromService() {
         
@@ -160,12 +161,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
         } else {
             
-            if let activityIndicator = activityIndicator {
-                activityIndicator.startAnimating()
-            } else {
-                setupActivityIndicator()
-                activityIndicator.startAnimating()
-            }
+            _ = (activityIndicator != nil) ? activityIndicator.startAnimating() : setupActivityIndicator()
+            
             self.refreshControl.beginRefreshing()
             self.getDataFromService { [weak self] (isSuccess, arr, _) in
                 if isSuccess {
